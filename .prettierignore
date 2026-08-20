@@ -1,0 +1,8 @@
+dist/
+node_modules/
+target/
+references/
+plans/
+pnpm-lock.yaml
+Cargo.lock
+*.log

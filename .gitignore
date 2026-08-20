@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Rust build artifacts
+target/
+**/*.rs.bk
+Cargo.lock
+
+# Build & Bundler outputs
+dist/
+.output/
+.tanstack/
+.vite/
+.turbo/
+
+# Local References & Unstructured Knowledge
+references/
+plans/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+
+# IDE & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
