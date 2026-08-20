@@ -1,0 +1,49 @@
+name: 📖 User Story
+description: High-level user story representing an active-recall or platform feature
+title: "Story: "
+labels: ["type: story"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 📖 User Story Contract
+        Every story must have a clear learner narrative, deterministic acceptance criteria, and traceability to `specs/requirements/`.
+  - type: input
+    id: requirement_ref
+    attributes:
+      label: 🎯 Requirements Traceability
+      description: Cite the exact section in `specs/requirements/MVP.md` (e.g. `REQ-INGEST-1`, `REQ-FSRS-2`).
+      placeholder: "specs/requirements/MVP.md §REQ-INGEST-1"
+    validations:
+      required: true
+  - type: textarea
+    id: user_narrative
+    attributes:
+      label: 👤 User Narrative
+      description: Explain what value this provides to the language learner.
+      value: |
+        **As a** language learner studying Bulgarian,
+        **I want to** 
+        **So that** 
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: ✅ Acceptance Checklist (QA Contract)
+      description: Deterministic criteria that must all pass before sign-off.
+      value: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Criterion 3
+    validations:
+      required: true
+  - type: textarea
+    id: technical_scope
+    attributes:
+      label: 🛠️ Technical Scope
+      description: Crates, routes, database tables, and UI components involved.
+      value: |
+        - **Backend Crates**: `crates/api`, `crates/core`, `crates/db`, `crates/ai`, `crates/mcp-server`
+        - **Frontend Packages**: `apps/web`, `packages/shared-types`
+        - **Database Tables**: 

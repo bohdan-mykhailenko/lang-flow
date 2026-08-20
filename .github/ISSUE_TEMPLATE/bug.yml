@@ -1,0 +1,28 @@
+name: 🐛 Bug / QA Defect
+description: Report an issue found during testing or active recall study
+title: "fix: "
+labels: ["type: bug"]
+body:
+  - type: textarea
+    id: bug_description
+    attributes:
+      label: 🔍 Bug Description
+      description: Describe what happened vs what was expected.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction_steps
+    attributes:
+      label: 🔄 Reproduction Steps
+      value: |
+        1. Navigate to ...
+        2. Perform action ...
+        3. Observe failure ...
+    validations:
+      required: true
+  - type: textarea
+    id: remediation
+    attributes:
+      label: 🎯 Root Cause & Remediation Plan
+    validations:
+      required: true
