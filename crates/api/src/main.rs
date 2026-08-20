@@ -1,3 +1,4 @@
+use ai::{parse_raw_transcript, GeminiClient, IngestionExtractionResult};
 use axum::{
     extract::{Query, State},
     http::StatusCode,
@@ -13,6 +14,7 @@ use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 #[derive(Clone)]
 pub struct AppState {
     pub database_url: String,
+    pub gemini: GeminiClient,
 }
 
 #[derive(Serialize)]
@@ -44,20 +46,31 @@ pub struct IngestRequest {
 #[derive(Serialize)]
 pub struct IngestResponse {
     pub message: String,
-    pub card_count: usize,
+    pub extracted: IngestionExtractionResult,
 }
 
 async fn ingest_handler(
-    State(_state): State<Arc<AppState>>,
+    State(state): State<Arc<AppState>>,
     Json(payload): Json<IngestRequest>,
-) -> impl IntoResponse {
-    (
-        StatusCode::ACCEPTED,
+) -> Result<impl IntoResponse, (StatusCode, String)> {
+    let cleaned_text = parse_raw_transcript(&payload.content, &payload.source_type);
+    if cleaned_text.trim().is_empty() {
+        return Err((StatusCode::BAD_REQUEST, "Content is empty".to_string()));
+    }
+
+    let extraction = state
+        .gemini
+        .extract_vocabulary(&cleaned_text, &payload.language)
+        .await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()))?;
+
+    Ok((
+        StatusCode::OK,
         Json(IngestResponse {
-            message: format!("Document '{}' queued for AI extraction.", payload.title),
-            card_count: 0,
+            message: format!("Successfully processed document '{}'", payload.title),
+            extracted: extraction,
         }),
-    )
+    ))
 }
 
 #[derive(Deserialize)]
@@ -90,8 +103,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let database_url =
         std::env::var("DATABASE_URL").unwrap_or_else(|_| "postgres://localhost/lang_flow".to_string());
+    let gemini_key = std::env::var("GEMINI_API_KEY").unwrap_or_default();
 
-    let state = Arc::new(AppState { database_url });
+    let state = Arc::new(AppState {
+        database_url,
+        gemini: GeminiClient::new(gemini_key),
+    });
 
     let cors = CorsLayer::new()
         .allow_origin(Any)
@@ -105,7 +122,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .layer(cors)
         .with_state(state);
 
-    let port = std::env::var("PORT").unwrap_or_else(|_| "8080".to_string());
+    let port = std::env::var("PORT").unwrap_or_else(|_| "8081".to_string());
     let addr = format!("0.0.0.0:{}", port);
     let listener = tokio::net::TcpListener::bind(&addr).await?;
     tracing::info!("🚀 LangFlow Axum API listening on http://{}", addr);
