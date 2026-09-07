@@ -6,9 +6,8 @@ export default defineConfig({
   image: { service: { entrypoint: 'astro/assets/services/noop' } },
   integrations: [
     starlight({
-      title: 'Englow / Британська англійська',
-      description:
-        "English Learning, British Phonetics, & Strict Teacher's VIP Classroom for Настінька.",
+      title: 'Englow',
+      description: 'American English & 1-on-1 Learning Portal.',
       defaultLocale: 'root',
       locales: {
         root: {
@@ -23,57 +22,48 @@ export default defineConfig({
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         {
-          label: 'The English Alphabet',
-          translations: { uk: 'Англійський алфавіт' },
-          items: [
-            {
-              label: 'Alphabet Explorer (A-Z)',
-              translations: { uk: 'Інтерактивний алфавіт (A-Z)' },
-              slug: 'index',
-            },
-          ],
+          label: 'Team',
+          translations: { uk: 'Команда' },
+          slug: 'team',
         },
         {
-          label: 'The VIP Classroom',
-          translations: { uk: 'Приватний VIP Клас' },
-          items: [
-            {
-              label: 'Strict Teacher & Настінька (Anasteysha)',
-              translations: { uk: 'Суворий Вчитель і Настінька' },
-              slug: 'classroom/overview',
-            },
-          ],
+          label: 'Alphabet',
+          translations: { uk: 'Алфавіт' },
+          slug: 'index',
         },
         {
-          label: 'Phonetics & Pronunciation Lab',
-          translations: { uk: 'Фонетика та вимова' },
+          label: 'English Variations (US, UK, AU)',
+          translations: { uk: 'Варіанти англійської (US, UK, AU)' },
+          slug: 'variations',
+        },
+        {
+          label: 'Pronunciation',
+          translations: { uk: 'Вимова' },
           items: [
             {
-              label: 'The TH Sound & Consonants',
-              translations: { uk: 'Звуки TH та приголосні' },
-              slug: 'phonetics/th-and-consonants',
+              label: 'The TH Sound',
+              translations: { uk: 'Звуки TH' },
+              slug: 'phonetics/th-sound',
             },
             {
-              label: 'British Vowels & Diphthongs',
-              translations: { uk: 'Британські голосні та дифтонги' },
+              label: 'Vowels & Sounds',
+              translations: { uk: 'Голосні звуки' },
               slug: 'phonetics/vowels-and-diphthongs',
             },
           ],
         },
         {
-          label: 'Core Grammar & Verbs',
-          translations: { uk: 'Граматика та дієслова' },
+          label: 'Grammar',
+          translations: { uk: 'Граматика' },
           items: [
             {
-              label: 'Essential Tenses (Present, Past, Future)',
-              translations: {
-                uk: 'Основні часи (Теперішній, Минулий, Майбутній)',
-              },
+              label: 'Basic Tenses',
+              translations: { uk: 'Основні часи' },
               slug: 'grammar/essential-tenses',
             },
             {
-              label: 'Irregular Verbs Mastery',
-              translations: { uk: 'Таблиця неправильних дієслів' },
+              label: 'Irregular Verbs',
+              translations: { uk: 'Неправильні дієслова' },
               slug: 'grammar/irregular-verbs',
             },
           ],

@@ -17,6 +17,7 @@ Before writing, refactoring, or reviewing code, consult the domain-specific stan
 5. [AI & MCP Integration Rules](file:///docs/standards/ai-and-mcp.md) — Gemini JSON schemas, MCP tools, deterministic tool execution.
 6. [Database & Lexical Search Standards](file:///docs/standards/database.md) — Neon PostgreSQL, `tsvector` full-text search, migrations.
 7. [Agent Workflow & Delivery Loop](file:///docs/standards/organization-and-agent-workflow.md) — 4-stage delivery loop, design research, plan lifecycle.
+8. [Ukrainian-to-English Pedagogy & Style](file:///.agents/rules/pedagogy-ua-en.md) — Strict UA-to-EN bridging, GenAm baseline, zero fluff.
 
 ---
 
