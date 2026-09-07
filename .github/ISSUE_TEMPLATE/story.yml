@@ -1,7 +1,7 @@
 name: 📖 User Story
 description: High-level user story representing an active-recall or platform feature
-title: "Story: "
-labels: ["type: story"]
+title: 'Story: '
+labels: ['type: story']
 body:
   - type: markdown
     attributes:
@@ -13,7 +13,7 @@ body:
     attributes:
       label: 🎯 Requirements Traceability
       description: Cite the exact section in `specs/requirements/MVP.md` (e.g. `REQ-INGEST-1`, `REQ-FSRS-2`).
-      placeholder: "specs/requirements/MVP.md §REQ-INGEST-1"
+      placeholder: 'specs/requirements/MVP.md §REQ-INGEST-1'
     validations:
       required: true
   - type: textarea
@@ -24,7 +24,7 @@ body:
       value: |
         **As a** language learner studying Bulgarian,
         **I want to** 
-        **So that** 
+        **So that**
     validations:
       required: true
   - type: textarea
@@ -46,4 +46,4 @@ body:
       value: |
         - **Backend Crates**: `crates/api`, `crates/core`, `crates/db`, `crates/ai`, `crates/mcp-server`
         - **Frontend Packages**: `apps/web`, `packages/shared-types`
-        - **Database Tables**: 
+        - **Database Tables**:

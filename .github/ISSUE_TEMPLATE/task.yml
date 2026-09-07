@@ -1,14 +1,14 @@
 name: ⚙️ Technical Task / Sub-Issue
 description: Concrete engineering sub-task attached to a parent User Story
-title: "feat/chore: "
-labels: ["type: task"]
+title: 'feat/chore: '
+labels: ['type: task']
 body:
   - type: input
     id: parent_story
     attributes:
       label: 🔗 Parent Story
       description: Link or reference to the parent Story issue (e.g. #1).
-      placeholder: "#1"
+      placeholder: '#1'
     validations:
       required: true
   - type: textarea

@@ -46,5 +46,6 @@ LangFlow implements the **Model Context Protocol (MCP)** specification, exposing
 ## 💬 Conversational Tutor Integration
 
 The in-app AI tutor directly invokes these tools during dialogue:
-- *"Where did I encounter 'въпреки'?"* → Calls `search_library("въпреки")` and references authentic transcript timestamps.
-- *"Add 3 collocations with 'свиквам' to my deck"* → Calls `create_flashcard(...)` and immediately schedules them for review.
+
+- _"Where did I encounter 'въпреки'?"_ → Calls `search_library("въпреки")` and references authentic transcript timestamps.
+- _"Add 3 collocations with 'свиквам' to my deck"_ → Calls `create_flashcard(...)` and immediately schedules them for review.

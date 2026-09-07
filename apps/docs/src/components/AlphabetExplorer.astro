@@ -1,0 +1,165 @@
+---
+interface Props {
+  lang?: 'bg' | 'uk';
+}
+
+const { lang = 'bg' } = Astro.props;
+const isUk = lang === 'uk';
+
+interface LetterItem {
+  letter: string;
+  nameBg: string;
+  nameUk: string;
+  ipa: string;
+  category: 'vowel' | 'voiced' | 'voiceless' | 'sonorant' | 'special';
+  categoryLabelBg: string;
+  categoryLabelUk: string;
+  example: string;
+  meaningBg: string;
+  meaningUk: string;
+  audioText: string;
+}
+
+const letters: LetterItem[] = [
+  { letter: 'А а', nameBg: 'А', nameUk: 'А', ipa: '[a] / [ɐ]', category: 'vowel', categoryLabelBg: 'Широка гласна', categoryLabelUk: 'Широкий голосний', example: 'а́втобус', meaningBg: 'превозно средство', meaningUk: 'автобус', audioText: 'А. автобус' },
+  { letter: 'Б б', nameBg: 'Бъ', nameUk: 'Бе', ipa: '[b] → [p]', category: 'voiced', categoryLabelBg: 'Звучна съгласна', categoryLabelUk: 'Дзвінкий приголосний', example: 'бълга́рин', meaningBg: 'гражданин на България', meaningUk: 'болгарин', audioText: 'Бъ. българин' },
+  { letter: 'В в', nameBg: 'Въ', nameUk: 'Ве', ipa: '[v] → [f]', category: 'voiced', categoryLabelBg: 'Звучна съгласна', categoryLabelUk: 'Дзвінкий приголосний', example: 'вода́', meaningBg: 'течност за пиене', meaningUk: 'вода', audioText: 'Въ. вода' },
+  { letter: 'Г г', nameBg: 'Гъ', nameUk: 'Ге', ipa: '[g] → [k]', category: 'voiced', categoryLabelBg: 'Звучна съгласна', categoryLabelUk: 'Дзвінкий приголосний', example: 'град', meaningBg: 'голямо селище', meaningUk: 'місто', audioText: 'Гъ. град' },
+  { letter: 'Д д', nameBg: 'Дъ', nameUk: 'Де', ipa: '[d] → [t]', category: 'voiced', categoryLabelBg: 'Звучна съгласна', categoryLabelUk: 'Дзвінкий приголосний', example: 'де́н', meaningBg: 'светлата част на денонощието', meaningUk: 'день', audioText: 'Дъ. ден' },
+  { letter: 'Е е', nameBg: 'Е', nameUk: 'Е', ipa: '[ɛ]', category: 'vowel', categoryLabelBg: 'Широка гласна', categoryLabelUk: 'Широкий голосний', example: 'е́сен', meaningBg: 'годишен сезон', meaningUk: 'осінь', audioText: 'Е. есен' },
+  { letter: 'Ж ж', nameBg: 'Же', nameUk: 'Же', ipa: '[ʒ] → [ʃ]', category: 'voiced', categoryLabelBg: 'Звучна съгласна', categoryLabelUk: 'Дзвінкий приголосний', example: 'живо́т', meaningBg: 'съществуване', meaningUk: 'життя', audioText: 'Же. живот' },
+  { letter: 'З з', nameBg: 'Зъ', nameUk: 'Зе', ipa: '[z] → [s]', category: 'voiced', categoryLabelBg: 'Звучна съгласна', categoryLabelUk: 'Дзвінкий приголосний', example: 'здра́ве', meaningBg: 'състояние на организма', meaningUk: "здоров'я", audioText: 'Зъ. здраве' },
+  { letter: 'И и', nameBg: 'И', nameUk: 'И', ipa: '[i]', category: 'vowel', categoryLabelBg: 'Тясна гласна', categoryLabelUk: 'Вузький голосний', example: 'исто́рия', meaningBg: 'наука за миналото', meaningUk: 'історія', audioText: 'И. история' },
+  { letter: 'Й й', nameBg: 'И кратко', nameUk: 'Йот', ipa: '[j]', category: 'sonorant', categoryLabelBg: 'Сонорна съгласна', categoryLabelUk: 'Сонорний приголосний', example: 'йо́гурт', meaningBg: 'кисело мляко', meaningUk: 'йогурт', audioText: 'И кратко. йогурт' },
+  { letter: 'К к', nameBg: 'Къ', nameUk: 'Ка', ipa: '[k]', category: 'voiceless', categoryLabelBg: 'Беззвучна съгласна', categoryLabelUk: 'Глухий приголосний', example: 'къ́ща', meaningBg: 'сграда за живеене', meaningUk: 'будинок, дім', audioText: 'Къ. къща' },
+  { letter: 'Л л', nameBg: 'Лъ', nameUk: 'Ель', ipa: '[l] / [ɫ]', category: 'sonorant', categoryLabelBg: 'Сонорна съгласна', categoryLabelUk: 'Сонорний приголосний', example: 'любо́в', meaningBg: 'силно чувство', meaningUk: 'любов, кохання', audioText: 'Лъ. любов' },
+  { letter: 'М м', nameBg: 'Мъ', nameUk: 'Ем', ipa: '[m]', category: 'sonorant', categoryLabelBg: 'Сонорна съгласна', categoryLabelUk: 'Сонорний приголосний', example: 'мо́ре', meaningBg: 'воден басейн', meaningUk: 'море', audioText: 'Мъ. море' },
+  { letter: 'Н н', nameBg: 'Нъ', nameUk: 'Ен', ipa: '[n]', category: 'sonorant', categoryLabelBg: 'Сонорна съгласна', categoryLabelUk: 'Сонорний приголосний', example: 'наро́д', meaningBg: 'общност от хора', meaningUk: 'народ', audioText: 'Нъ. народ' },
+  { letter: 'О о', nameBg: 'О', nameUk: 'О', ipa: '[ɔ] → [u]', category: 'vowel', categoryLabelBg: 'Широка гласна', categoryLabelUk: 'Широкий голосний', example: 'прозо́рец', meaningBg: 'отвор за светлина', meaningUk: 'вікно', audioText: 'О. прозорец' },
+  { letter: 'П п', nameBg: 'Пъ', nameUk: 'Пе', ipa: '[p]', category: 'voiceless', categoryLabelBg: 'Беззвучна съгласна', categoryLabelUk: 'Глухий приголосний', example: 'път', meaningBg: 'линия за движение', meaningUk: 'дорога, шлях', audioText: 'Пъ. път' },
+  { letter: 'Р р', nameBg: 'Ръ', nameUk: 'Ер', ipa: '[r]', category: 'sonorant', categoryLabelBg: 'Сонорна съгласна', categoryLabelUk: 'Сонорний приголосний', example: 'река́', meaningBg: 'воден поток', meaningUk: 'річка', audioText: 'Ръ. река' },
+  { letter: 'С с', nameBg: 'Съ', nameUk: 'Ес', ipa: '[s]', category: 'voiceless', categoryLabelBg: 'Беззвучна съгласна', categoryLabelUk: 'Глухий приголосний', example: 'слъ́нце', meaningBg: 'небесно светило', meaningUk: 'сонце', audioText: 'Съ. слънце' },
+  { letter: 'Т т', nameBg: 'Тъ', nameUk: 'Те', ipa: '[t]', category: 'voiceless', categoryLabelBg: 'Беззвучна съгласна', categoryLabelUk: 'Глухий приголосний', example: 'то́пло', meaningBg: 'висока температура', meaningUk: 'тепло', audioText: 'Тъ. топло' },
+  { letter: 'У у', nameBg: 'У', nameUk: 'У', ipa: '[u]', category: 'vowel', categoryLabelBg: 'Тясна гласна', categoryLabelUk: 'Вузький голосний', example: 'учи́лище', meaningBg: 'сграда за образование', meaningUk: 'школа', audioText: 'У. училище' },
+  { letter: 'Ф ф', nameBg: 'Фъ', nameUk: 'Еф', ipa: '[f]', category: 'voiceless', categoryLabelBg: 'Беззвучна съгласна', categoryLabelUk: 'Глухий приголосний', example: 'фене́р', meaningBg: 'уред за осветление', meaningUk: 'ліхтар', audioText: 'Фъ. фенер' },
+  { letter: 'Х х', nameBg: 'Хъ', nameUk: 'Ха', ipa: '[x]', category: 'voiceless', categoryLabelBg: 'Беззвучна съгласна', categoryLabelUk: 'Глухий приголосний', example: 'хляб', meaningBg: 'тестен продукт', meaningUk: 'хліб', audioText: 'Хъ. хляб' },
+  { letter: 'Ц ц', nameBg: 'Цъ', nameUk: 'Це', ipa: '[ts]', category: 'voiceless', categoryLabelBg: 'Беззвучна съгласна', categoryLabelUk: 'Глухий приголосний', example: 'цве́те', meaningBg: 'растение с цвят', meaningUk: 'квітка', audioText: 'Цъ. цвете' },
+  { letter: 'Ч ч', nameBg: 'Че', nameUk: 'Че', ipa: '[tʃ]', category: 'voiceless', categoryLabelBg: 'Беззвучна съгласна', categoryLabelUk: 'Глухий приголосний', example: 'чове́к', meaningBg: 'разумно същество', meaningUk: 'людина', audioText: 'Че. човек' },
+  { letter: 'Ш ш', nameBg: 'Ша', nameUk: 'Ша', ipa: '[ʃ]', category: 'voiceless', categoryLabelBg: 'Беззвучна съгласна', categoryLabelUk: 'Глухий приголосний', example: 'шокола́д', meaningBg: 'сладко изделие', meaningUk: 'шоколад', audioText: 'Ша. шоколад' },
+  { letter: 'Щ щ', nameBg: 'Ща', nameUk: 'Ща ([шт])', ipa: '[ʃt]', category: 'special', categoryLabelBg: 'Звукове [шт]', categoryLabelUk: 'Звуки [шт]', example: 'ща́стие', meaningBg: 'радост и благополучие', meaningUk: 'щастя', audioText: 'Ща. щастие' },
+  { letter: 'Ъ ъ', nameBg: 'Ер голям', nameUk: 'Ер голям ([ъ])', ipa: '[ɤ] / [ɐ]', category: 'special', categoryLabelBg: 'Гласна [ъ]', categoryLabelUk: 'Голосний [ъ]', example: 'ъ́гъл', meaningBg: 'геометрична фигура', meaningUk: 'кут', audioText: 'Ер голям. ъгъл' },
+  { letter: 'Ь ь', nameBg: 'Ер малък', nameUk: 'Ер малък (пред О)', ipa: '[ʲ]', category: 'special', categoryLabelBg: 'Мекост пред О', categoryLabelUk: "М'якість перед О", example: 'си́ньо', meaningBg: 'цвят на небето', meaningUk: 'синє', audioText: 'Ер малък. синьо' },
+  { letter: 'Ю ю', nameBg: 'Ю', nameUk: 'Ю', ipa: '[ju] / [ʲu]', category: 'special', categoryLabelBg: 'Гласна [йу]', categoryLabelUk: 'Йотований [йу]', example: 'юг', meaningBg: 'географска посока', meaningUk: 'південь', audioText: 'Ю. юг' },
+  { letter: 'Я я', nameBg: 'Я', nameUk: 'Я', ipa: '[ja] / [jɐ]', category: 'special', categoryLabelBg: 'Гласна [йа]', categoryLabelUk: 'Йотований [йа]', example: 'я́бълка', meaningBg: 'плод на дърво', meaningUk: 'яблуко', audioText: 'Я. ябълка' },
+];
+---
+
+<div class="alphabet-wrapper">
+  <div class="alphabet-filters" id="alphabet-filters">
+    <button class="alphabet-filter-btn active" data-filter="all">
+      {isUk ? 'Всі (30)' : 'Всички (30)'}
+    </button>
+    <button class="alphabet-filter-btn" data-filter="vowel">
+      {isUk ? 'Голосні (6)' : 'Гласни (6)'}
+    </button>
+    <button class="alphabet-filter-btn" data-filter="voiced">
+      {isUk ? 'Дзвінкі (6)' : 'Звучни (6)'}
+    </button>
+    <button class="alphabet-filter-btn" data-filter="voiceless">
+      {isUk ? 'Глухі (9)' : 'Беззвучни (9)'}
+    </button>
+    <button class="alphabet-filter-btn" data-filter="sonorant">
+      {isUk ? 'Сонорні (5)' : 'Сонорни (5)'}
+    </button>
+    <button class="alphabet-filter-btn" data-filter="special">
+      {isUk ? 'Специфічні (5)' : 'Специфични (5)'}
+    </button>
+  </div>
+
+  <div class="alphabet-grid" id="alphabet-grid">
+    {letters.map((item) => (
+      <div class="letter-card" data-category={item.category}>
+        <div class="letter-card-header">
+          <div>
+            <div class="letter-main">{item.letter}</div>
+            <div class="letter-name-tag">{isUk ? item.nameUk : item.nameBg}</div>
+          </div>
+          <span class="letter-sound-badge">{item.ipa}</span>
+        </div>
+
+        <div class={`letter-type-pill type-${item.category}`}>
+          {isUk ? item.categoryLabelUk : item.categoryLabelBg}
+        </div>
+
+        <div class="letter-example">
+          <div>
+            <div class="example-word">{item.example}</div>
+            <div class="example-meaning">{isUk ? item.meaningUk : item.meaningBg}</div>
+          </div>
+          <button 
+            type="button" 
+            class="audio-btn" 
+            data-audio={item.audioText} 
+            title={isUk ? `Вимова: ${item.letter}` : `Произношение: ${item.letter}`}
+            aria-label={isUk ? `Вимова: ${item.letter}` : `Произношение: ${item.letter}`}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('.alphabet-filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.letter-card');
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      cards.forEach((card) => {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  const audioButtons = document.querySelectorAll<HTMLButtonElement>('.audio-btn');
+
+  audioButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const text = btn.getAttribute('data-audio');
+      if (!text || !('speechSynthesis' in window)) return;
+
+      window.speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'bg-BG';
+      utterance.rate = 0.85;
+
+      const voices = window.speechSynthesis.getVoices();
+      const bgVoice = voices.find((v) => v.lang.startsWith('bg'));
+      if (bgVoice) {
+        utterance.voice = bgVoice;
+      }
+
+      btn.classList.add('playing');
+      utterance.onend = () => btn.classList.remove('playing');
+      utterance.onerror = () => btn.classList.remove('playing');
+
+      window.speechSynthesis.speak(utterance);
+    });
+  });
+</script>

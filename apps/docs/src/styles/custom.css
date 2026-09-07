@@ -1,0 +1,634 @@
+/*
+ * ====================================================================
+ * БЪЛГАРСКА ГРАМАТИКА — 2026 LUXURY DESIGN SYSTEM
+ * Тема с трите български цвята (Бяло, Зелено, Червено)
+ * Видима движеща се 3-цветна фонова анимация (Tricolor Aurora Gradient)
+ * Перфектно центрирани икони и 3D дълбочина
+ * ====================================================================
+ */
+
+:root {
+  /* Тъмна тема (OLED Canvas) */
+  --sl-color-accent-low: rgba(0, 179, 131, 0.12);
+  --sl-color-accent: #00b383;
+  --sl-color-accent-high: #6ee7b7;
+
+  --bg-green-primary: #00b383;
+  --bg-green-glow: rgba(0, 179, 131, 0.35);
+  --bg-red-accent: #ef4444;
+  --bg-red-dark: #dc2626;
+  --bg-red-glow: rgba(239, 68, 68, 0.35);
+  --bg-white-contrast: #ffffff;
+
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #f1f5f9;
+  --sl-color-gray-2: #cbd5e1;
+  --sl-color-gray-3: #94a3b8;
+  --sl-color-gray-4: #64748b;
+  --sl-color-gray-5: #334155;
+  --sl-color-gray-6: #1e293b;
+  --sl-color-gray-7: #0f172a;
+  --sl-color-black: #06090e;
+
+  --sl-color-bg: #070a11;
+  --sl-color-bg-nav: rgba(7, 10, 17, 0.88);
+  --sl-color-bg-sidebar: #0a0e17;
+
+  --card-bg: rgba(15, 23, 42, 0.65);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-hover-border: rgba(0, 179, 131, 0.55);
+  --card-glow: rgba(0, 179, 131, 0.25);
+}
+
+:root[data-theme='light'] {
+  /* Светла тема */
+  --sl-color-accent-low: rgba(0, 135, 90, 0.1);
+  --sl-color-accent: #00875a;
+  --sl-color-accent-high: #004d34;
+
+  --bg-green-primary: #00875a;
+  --bg-green-glow: rgba(0, 135, 90, 0.25);
+  --bg-red-accent: #dc2626;
+  --bg-red-dark: #b91c1c;
+  --bg-red-glow: rgba(220, 38, 38, 0.25);
+  --bg-white-contrast: #0f172a;
+
+  --sl-color-white: #0f172a;
+  --sl-color-gray-1: #1e293b;
+  --sl-color-gray-2: #334155;
+  --sl-color-gray-3: #64748b;
+  --sl-color-gray-4: #94a3b8;
+  --sl-color-gray-5: #cbd5e1;
+  --sl-color-gray-6: #e2e8f0;
+  --sl-color-gray-7: #f8fafc;
+  --sl-color-black: #ffffff;
+
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: rgba(255, 255, 255, 0.92);
+  --sl-color-bg-sidebar: #f8fafc;
+
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-hover-border: rgba(0, 135, 90, 0.55);
+  --card-glow: rgba(0, 135, 90, 0.18);
+}
+
+/* ====================================================================
+   ОСНОВЕН ИЗЧИСТЕН ФОН (БЕЗ ТЕЖКИ ФОНОВИ ГРАДИЕНТИ)
+   ==================================================================== */
+
+html {
+  background-color: #070a11;
+}
+
+html[data-theme='light'] {
+  background-color: #ffffff;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-feature-settings: 'locl' 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ====================================================================
+   3-ЦВЕТНА ДВИЖЕЩА СЕ ГРАДИЕНТНА ЛЕНТА (HEADER & H1)
+   ==================================================================== */
+
+header.header {
+  position: relative !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Активна движеща се трицветна лента на върха */
+header.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #00b383 25%,
+    #ef4444 50%,
+    #ffffff 75%,
+    #00b383 100%
+  );
+  background-size: 200% 100%;
+  animation: tricolorRibbon 5s linear infinite;
+  z-index: 100;
+}
+
+@keyframes tricolorRibbon {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* Заглавие h1 с анимиран трицветен градиентен подчертаващ детайл */
+.sl-markdown-content h1 {
+  position: relative;
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.sl-markdown-content h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 160px;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--bg-white-contrast) 0%,
+    var(--bg-green-primary) 33.3%,
+    var(--bg-red-accent) 66.6%,
+    var(--bg-white-contrast) 100%
+  );
+  background-size: 200% 100%;
+  animation: tricolorRibbon 4s linear infinite;
+  border-radius: 9999px;
+  box-shadow: 0 0 14px rgba(0, 179, 131, 0.5);
+}
+
+/* Активен маркер в страничната лента */
+.sidebar-content a[aria-current='page'] {
+  color: #ffffff !important;
+  background: linear-gradient(
+    135deg,
+    var(--bg-green-primary) 0%,
+    #00875a 100%
+  ) !important;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 14px rgba(0, 150, 110, 0.4);
+  border-left: 4px solid var(--bg-red-accent) !important;
+  transform: translateX(2px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Цитати */
+.sl-markdown-content blockquote {
+  border-inline-start: 4px solid var(--bg-green-primary);
+  background: linear-gradient(
+    135deg,
+    var(--sl-color-accent-low) 0%,
+    rgba(15, 23, 42, 0.3) 100%
+  );
+  padding: 1rem 1.35rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+  margin: 1.75rem 0;
+  backdrop-filter: blur(12px);
+}
+
+/* Предупреждения */
+.sl-markdown-content aside[aria-label='Warning'],
+.sl-markdown-content aside[aria-label='Caution'],
+.sl-markdown-content aside[aria-label='Danger'] {
+  border-inline-start-color: var(--bg-red-accent) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.08) 0%,
+    rgba(15, 23, 42, 0.35) 100%
+  ) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.sl-markdown-content aside[aria-label='Warning'] .starlight-aside__title,
+.sl-markdown-content aside[aria-label='Caution'] .starlight-aside__title,
+.sl-markdown-content aside[aria-label='Danger'] .starlight-aside__title {
+  color: var(--bg-red-accent) !important;
+}
+
+/* Картите на Starlight */
+.card {
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease !important;
+  border: 1px solid var(--card-border) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--card-hover-border) !important;
+  box-shadow:
+    0 16px 32px -8px rgba(0, 0, 0, 0.5),
+    0 0 20px -4px var(--card-glow) !important;
+}
+
+.card .icon {
+  background: var(--sl-color-accent-low) !important;
+  color: var(--bg-green-primary) !important;
+  border: 1px solid var(--card-hover-border);
+}
+
+/* Таблици */
+.sl-markdown-content table {
+  width: 100%;
+  display: table;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.75rem 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(16px);
+}
+
+.sl-markdown-content th {
+  background: var(--sl-color-accent-low);
+  color: var(--bg-green-primary);
+  font-weight: 700;
+  text-align: left;
+  padding: 0.85rem 1.15rem;
+  border-bottom: 2px solid var(--card-border);
+  font-size: 0.875rem;
+}
+
+.sl-markdown-content td {
+  padding: 0.85rem 1.15rem;
+  border-bottom: 1px solid var(--card-border);
+  font-size: 0.925rem;
+  transition: background 0.15s ease;
+}
+
+.sl-markdown-content tr:last-child td {
+  border-bottom: none;
+}
+
+.sl-markdown-content tr:hover td {
+  background: rgba(0, 179, 131, 0.06);
+}
+
+/* ====================================================================
+   ИНТЕРАКТИВНА АЗБУКА (ALPHABET EXPLORER) С 3D КАРТИ
+   ==================================================================== */
+
+.alphabet-wrapper {
+  margin: 2rem 0;
+}
+
+.alphabet-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.4rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.85rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.2);
+}
+
+.alphabet-filter-btn {
+  padding: 0.55rem 1.15rem;
+  border-radius: 0.6rem;
+  border: none;
+  background: transparent;
+  color: var(--sl-color-gray-3);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.alphabet-filter-btn:hover {
+  color: var(--sl-color-white);
+  background: var(--sl-color-accent-low);
+  transform: translateY(-1px);
+}
+
+.alphabet-filter-btn.active {
+  background: var(--bg-green-primary);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0, 150, 110, 0.4);
+  transform: translateY(-1px);
+}
+
+.alphabet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.35rem;
+  perspective: 1200px;
+}
+
+/* 3D Карти */
+.letter-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1.15rem;
+  padding: 1.35rem;
+  backdrop-filter: blur(16px);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease;
+  box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.35);
+}
+
+.letter-card:hover {
+  transform: translateY(-6px) translateZ(12px) rotateX(1.5deg);
+  border-color: var(--card-hover-border);
+  box-shadow:
+    0 20px 40px -12px rgba(0, 0, 0, 0.6),
+    0 0 24px -4px var(--card-glow);
+}
+
+.letter-card[data-category='special'] {
+  border-color: rgba(239, 68, 68, 0.3);
+  background: linear-gradient(
+    180deg,
+    rgba(239, 68, 68, 0.06) 0%,
+    var(--card-bg) 100%
+  );
+}
+
+.letter-card[data-category='special']:hover {
+  border-color: var(--bg-red-accent);
+  box-shadow:
+    0 20px 40px -12px rgba(0, 0, 0, 0.6),
+    0 0 24px -4px var(--bg-red-glow);
+}
+
+.letter-card[data-category='special'] .letter-main {
+  color: var(--bg-red-accent);
+}
+
+.letter-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.letter-main {
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--sl-color-white);
+  letter-spacing: -0.03em;
+  transition: transform 0.3s ease;
+}
+
+.letter-card:hover .letter-main {
+  transform: scale(1.04);
+}
+
+.letter-name-tag {
+  font-size: 0.78rem;
+  color: var(--sl-color-gray-3);
+  margin-top: 0.3rem;
+  font-weight: 500;
+}
+
+.letter-sound-badge {
+  font-size: 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.45rem;
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--bg-red-accent);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.15);
+}
+
+.letter-type-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+
+.type-vowel {
+  background: rgba(0, 179, 131, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(0, 179, 131, 0.3);
+}
+
+.type-voiced {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.type-voiceless {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.type-sonorant {
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.type-special {
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #f87171 !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+
+.letter-example {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.example-word {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--sl-color-white);
+  letter-spacing: -0.01em;
+}
+
+.example-meaning {
+  font-size: 0.78rem;
+  color: var(--sl-color-gray-3);
+  margin-top: 0.15rem;
+}
+
+.audio-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--bg-green-primary);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 3px 8px rgba(0, 150, 110, 0.35);
+}
+
+.audio-btn:hover {
+  transform: scale(1.12);
+  background: #00966e;
+  box-shadow: 0 6px 16px rgba(0, 150, 110, 0.5);
+}
+
+.audio-btn:active {
+  transform: scale(0.92);
+}
+
+.audio-btn.playing {
+  animation: pulse-ring 1s infinite;
+  background: var(--bg-red-accent);
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* ====================================================================
+   ЛУКСОЗЕН БЛОК ЗА АКАДЕМИЧНИ ИЗТОЧНИЦИ (REFERENCES)
+   БЕЗУПРЕЧНО ВЕРТИКАЛНО ПОДРАВНЯВАНЕ НА ИКОНАТА И ТЕКСТА
+   ==================================================================== */
+
+.references-box {
+  position: relative !important;
+  margin-top: 3.5rem !important;
+  padding: 1.4rem 1.75rem !important;
+  border-radius: 0.9rem !important;
+  border-left: 4px solid var(--bg-red-accent) !important;
+  border-top: 1px solid var(--card-border) !important;
+  border-right: 1px solid var(--card-border) !important;
+  border-bottom: 1px solid var(--card-border) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.05) 0%,
+    rgba(15, 23, 42, 0.65) 100%
+  ) !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow:
+    -4px 0 18px -2px rgba(239, 68, 68, 0.3),
+    0 8px 28px -4px rgba(0, 0, 0, 0.35) !important;
+  font-size: 0.88rem !important;
+}
+
+html[data-theme='light'] .references-box {
+  background: linear-gradient(
+    135deg,
+    rgba(220, 38, 38, 0.04) 0%,
+    rgba(255, 255, 255, 0.95) 100%
+  ) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-left: 4px solid var(--bg-red-accent) !important;
+  box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Контейнер за заглавието - съвършено нормално и прецизно подравняване */
+.references-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.65rem !important;
+  font-weight: 700 !important;
+  color: var(--sl-color-white) !important;
+  margin-bottom: 1.15rem !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+}
+
+html[data-theme='light'] .references-title {
+  color: var(--sl-color-gray-1) !important;
+}
+
+.references-title svg,
+.references-title .references-icon {
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--bg-red-accent) !important;
+  /* Прецизен оптичен баланс с главните букви */
+  transform: translateY(1px) !important;
+}
+
+.references-title span {
+  display: inline-block !important;
+  line-height: 1.2 !important;
+  color: inherit !important;
+}
+
+.references-list {
+  margin: 0 !important;
+  padding-left: 1.35rem !important;
+  color: var(--sl-color-gray-3) !important;
+  line-height: 1.65 !important;
+}
+
+.references-list li {
+  margin-bottom: 0.35rem !important;
+}
+
+.references-list a {
+  color: var(--bg-green-primary) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+  transition: color 0.2s ease !important;
+}
+
+.references-list a:hover {
+  color: var(--bg-red-accent) !important;
+}
+
+/* Скролбар */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-green-primary);
+}

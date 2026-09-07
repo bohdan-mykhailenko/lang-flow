@@ -11,6 +11,7 @@ export default tseslint.config(
       '**/dist/**',
       '**/node_modules/**',
       '**/.tanstack/**',
+      '**/.astro/**',
       '**/target/**',
       '**/references/**',
       '**/plans/**',

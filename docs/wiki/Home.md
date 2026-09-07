@@ -1,6 +1,6 @@
 # 🌊 Welcome to LangFlow
 
-**LangFlow** is an AI-powered, active-recall language acquisition platform designed to accelerate fluency in **Bulgarian** (and extensible to Polish and French). 
+**LangFlow** is an AI-powered, active-recall language acquisition platform designed to accelerate fluency in **Bulgarian** (and extensible to Polish and French).
 
 It eliminates manual flashcard creation overhead by turning unstructured raw notes, media transcripts, YouTube `.vtt` subtitles, and NotebookLM exports into an active-recall Spaced Repetition System (SRS).
 
@@ -10,7 +10,7 @@ It eliminates manual flashcard creation overhead by turning unstructured raw not
 
 1. **Zero Flashcard Overhead**: Ingest any text or dialogue transcript and immediately receive 15–30 fully structured study cards with translations, aspect pairs, and etymology.
 2. **Context-Preserved Active Recall**: Every flashcard links directly back to the authentic sentence and original document where the word was encountered.
-3. **Slavic Linguistic Nuance**: Deep support for Slavic language mechanics—contextual Ukrainian translations, verb aspect pairs (e.g. *свиквам / свикна*), Slavic cognates, and false friends (*⚠️ False Friends*).
+3. **Slavic Linguistic Nuance**: Deep support for Slavic language mechanics—contextual Ukrainian translations, verb aspect pairs (e.g. _свиквам / свикна_), Slavic cognates, and false friends (_⚠️ False Friends_).
 4. **Database-Aware AI Tutor**: Conversational tutor powered by Gemini Function Calling and Model Context Protocol (MCP) to query notes and generate new cards directly into the database.
 5. **Zero-Cost & Edge-First Architecture**: 100% free-tier deployment gated securely at the edge.
 

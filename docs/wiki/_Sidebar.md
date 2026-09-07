@@ -2,9 +2,9 @@
 
 - **[Home](Home)**
 - **[Architecture & Tech Stack](Architecture-&-Tech-Stack)**
-- **[Spaced Repetition (FSRS)](Spaced-Repetition-(FSRS))**
+- **[Spaced Repetition (FSRS)](<Spaced-Repetition-(FSRS)>)**
 - **[Lexical Search vs. RAG](Lexical-Search-vs-Vector-RAG)**
-- **[Model Context Protocol](Model-Context-Protocol-(MCP))**
+- **[Model Context Protocol](<Model-Context-Protocol-(MCP)>)**
 
 ---
 
