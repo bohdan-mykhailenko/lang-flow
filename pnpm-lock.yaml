@@ -54,7 +54,7 @@ importers:
         specifier: ^8.24.0
         version: 8.67.0(eslint@9.39.5)(typescript@5.9.3)
 
-  apps/docs:
+  apps/bglow:
     dependencies:
       '@astrojs/starlight':
         specifier: ^0.32.5
@@ -70,7 +70,23 @@ importers:
         specifier: ^5.7.3
         version: 5.9.3
 
-  apps/web:
+  apps/englow:
+    dependencies:
+      '@astrojs/starlight':
+        specifier: ^0.32.5
+        version: 0.32.6(astro@5.18.2(@types/node@24.13.3)(rollup@4.62.4)(typescript@5.9.3)(yaml@2.9.0))
+      astro:
+        specifier: ^5.4.1
+        version: 5.18.2(@types/node@24.13.3)(rollup@4.62.4)(typescript@5.9.3)(yaml@2.9.0)
+    devDependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.10(prettier@3.9.6)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.7.3
+        version: 5.9.3
+
+  apps/langlow:
     dependencies:
       '@chakra-ui/react':
         specifier: ^3.8.1
@@ -111,13 +127,13 @@ importers:
         version: 19.2.4(@types/react@19.2.18)
       '@vitejs/plugin-react':
         specifier: ^4.3.4
-        version: 4.7.0(vite@6.4.3(@types/node@22.20.1)(yaml@2.9.0))
+        version: 4.7.0(vite@6.4.3(@types/node@24.13.3)(yaml@2.9.0))
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
       vite:
         specifier: ^6.1.0
-        version: 6.4.3(@types/node@22.20.1)(yaml@2.9.0)
+        version: 6.4.3(@types/node@24.13.3)(yaml@2.9.0)
 
   packages/shared-types:
     devDependencies:
@@ -5598,7 +5614,7 @@ snapshots:
 
   '@ungap/structured-clone@1.4.0': {}
 
-  '@vitejs/plugin-react@4.7.0(vite@6.4.3(@types/node@22.20.1)(yaml@2.9.0))':
+  '@vitejs/plugin-react@4.7.0(vite@6.4.3(@types/node@24.13.3)(yaml@2.9.0))':
     dependencies:
       '@babel/core': 7.29.7
       '@babel/plugin-transform-react-jsx-self': 7.29.7(@babel/core@7.29.7)
@@ -5606,7 +5622,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.27
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 6.4.3(@types/node@22.20.1)(yaml@2.9.0)
+      vite: 6.4.3(@types/node@24.13.3)(yaml@2.9.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -9491,19 +9507,6 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
-
-  vite@6.4.3(@types/node@22.20.1)(yaml@2.9.0):
-    dependencies:
-      esbuild: 0.25.12
-      fdir: 6.5.0(picomatch@4.0.5)
-      picomatch: 4.0.5
-      postcss: 8.5.26
-      rollup: 4.62.4
-      tinyglobby: 0.2.17
-    optionalDependencies:
-      '@types/node': 22.20.1
-      fsevents: 2.3.3
-      yaml: 2.9.0
 
   vite@6.4.3(@types/node@24.13.3)(yaml@2.9.0):
     dependencies:

@@ -1,0 +1,159 @@
+---
+interface Props {
+  lang?: 'en' | 'uk';
+}
+
+const { lang = 'en' } = Astro.props;
+const isUk = lang === 'uk';
+
+interface LetterItem {
+  letter: string;
+  nameEn: string;
+  nameUk: string;
+  ipa: string;
+  category: 'vowel' | 'consonant' | 'tricky';
+  categoryLabelEn: string;
+  categoryLabelUk: string;
+  example: string;
+  meaningEn: string;
+  meaningUk: string;
+  audioText: string;
+  tipEn?: string;
+  tipUk?: string;
+}
+
+const letters: LetterItem[] = [
+  { letter: 'A a', nameEn: 'A /eɪ/', nameUk: 'Ей', ipa: '/eɪ/ or /æ/', category: 'vowel', categoryLabelEn: 'Vowel', categoryLabelUk: 'Голосний', example: 'Apple', meaningEn: 'Fruit of an apple tree', meaningUk: 'Яблуко', audioText: 'A. Apple' },
+  { letter: 'B b', nameEn: 'B /biː/', nameUk: 'Бі', ipa: '/b/', category: 'consonant', categoryLabelEn: 'Voiced Consonant', categoryLabelUk: 'Дзвінкий приголосний', example: 'Book', meaningEn: 'Written or printed work', meaningUk: 'Книга', audioText: 'B. Book' },
+  { letter: 'C c', nameEn: 'C /siː/', nameUk: 'Сі', ipa: '/k/ or /s/', category: 'tricky', categoryLabelEn: 'Hard /k/ & Soft /s/', categoryLabelUk: 'Твердий /k/ та м’який /s/', example: 'Cat / City', meaningEn: 'Feline / Urban centre', meaningUk: 'Кіт / Місто', audioText: 'C. Cat, City' },
+  { letter: 'D d', nameEn: 'D /diː/', nameUk: 'Ді', ipa: '/d/', category: 'consonant', categoryLabelEn: 'Voiced Consonant', categoryLabelUk: 'Дзвінкий приголосний', example: 'Door', meaningEn: 'Entrance barrier', meaningUk: 'Двері', audioText: 'D. Door' },
+  { letter: 'E e', nameEn: 'E /iː/', nameUk: 'І', ipa: '/iː/ or /e/', category: 'vowel', categoryLabelEn: 'Vowel', categoryLabelUk: 'Голосний', example: 'Elephant', meaningEn: 'Large mammal with trunk', meaningUk: 'Слон', audioText: 'E. Elephant' },
+  { letter: 'F f', nameEn: 'F /ef/', nameUk: 'Еф', ipa: '/f/', category: 'consonant', categoryLabelEn: 'Voiceless Fricative', categoryLabelUk: 'Глухий щілинний', example: 'Friend', meaningEn: 'Person with mutual bond', meaningUk: 'Друг, подруга', audioText: 'F. Friend' },
+  { letter: 'G g', nameEn: 'G /dʒiː/', nameUk: 'Джі', ipa: '/ɡ/ or /dʒ/', category: 'tricky', categoryLabelEn: 'Hard /ɡ/ & Soft /dʒ/', categoryLabelUk: 'Твердий /ɡ/ та м’який /dʒ/', example: 'Garden / Giant', meaningEn: 'Plot of ground / Colossal', meaningUk: 'Сад / Велетень', audioText: 'G. Garden, Giant' },
+  { letter: 'H h', nameEn: 'H /eɪtʃ/', nameUk: 'Ейч', ipa: '/h/', category: 'consonant', categoryLabelEn: 'Aspirated Glottal', categoryLabelUk: 'Придиховий звук', example: 'Heart', meaningEn: 'Core organ of life', meaningUk: 'Серце', audioText: 'H. Heart' },
+  { letter: 'I i', nameEn: 'I /aɪ/', nameUk: 'Ай', ipa: '/aɪ/ or /ɪ/', category: 'vowel', categoryLabelEn: 'Vowel', categoryLabelUk: 'Голосний', example: 'Island', meaningEn: 'Land surrounded by sea', meaningUk: 'Острів', audioText: 'I. Island' },
+  { letter: 'J j', nameEn: 'J /dʒeɪ/', nameUk: 'Джей', ipa: '/dʒ/', category: 'consonant', categoryLabelEn: 'Voiced Affricate', categoryLabelUk: 'Дзвінкий африкат', example: 'Joy', meaningEn: 'Feeling of great pleasure', meaningUk: 'Радість', audioText: 'J. Joy' },
+  { letter: 'K k', nameEn: 'K /keɪ/', nameUk: 'Кей', ipa: '/k/', category: 'consonant', categoryLabelEn: 'Voiceless Plosive', categoryLabelUk: 'Глухий проривний', example: 'King', meaningEn: 'Male sovereign ruler', meaningUk: 'Король', audioText: 'K. King' },
+  { letter: 'L l', nameEn: 'L /el/', nameUk: 'Ел', ipa: '/l/', category: 'consonant', categoryLabelEn: 'Lateral Liquid', categoryLabelUk: 'Боковий сонорний', example: 'London', meaningEn: 'Capital of the UK', meaningUk: 'Лондон', audioText: 'L. London' },
+  { letter: 'M m', nameEn: 'M /em/', nameUk: 'Ем', ipa: '/m/', category: 'consonant', categoryLabelEn: 'Bilabial Nasal', categoryLabelUk: 'Губний носовий', example: 'Moon', meaningEn: 'Earth natural satellite', meaningUk: 'Місяць', audioText: 'M. Moon' },
+  { letter: 'N n', nameEn: 'N /en/', nameUk: 'Ен', ipa: '/n/', category: 'consonant', categoryLabelEn: 'Alveolar Nasal', categoryLabelUk: 'Ясенний носовий', example: 'Night', meaningEn: 'Time from sunset to sunrise', meaningUk: 'Ніч', audioText: 'N. Night' },
+  { letter: 'O o', nameEn: 'O /əʊ/', nameUk: 'Оу', ipa: '/əʊ/ or /ɒ/', category: 'vowel', categoryLabelEn: 'British Vowel /əʊ/', categoryLabelUk: 'Голосний дифтонг /əʊ/', example: 'Ocean', meaningEn: 'Very large expanse of sea', meaningUk: 'Океан', audioText: 'O. Ocean' },
+  { letter: 'P p', nameEn: 'P /piː/', nameUk: 'Пі', ipa: '/p/', category: 'consonant', categoryLabelEn: 'Aspirated Plosive', categoryLabelUk: 'Придиховий глухий', example: 'Peace', meaningEn: 'Freedom from disturbance', meaningUk: 'Мир, спокій', audioText: 'P. Peace' },
+  { letter: 'Q q', nameEn: 'Q /kjuː/', nameUk: 'К’ю', ipa: '/kw/', category: 'tricky', categoryLabelEn: 'Always with U (/kw/)', categoryLabelUk: 'Завжди у парі з U (/kw/)', example: 'Queen', meaningEn: 'Female sovereign monarch', meaningUk: 'Королева', audioText: 'Q. Queen' },
+  { letter: 'R r', nameEn: 'R /ɑː/', nameUk: 'Ар (British RP)', ipa: '/r/ or silent', category: 'tricky', categoryLabelEn: 'British Non-Rhotic', categoryLabelUk: 'Британський неротичний', example: 'Rose / Car', meaningEn: 'Fragrant flower / Vehicle', meaningUk: 'Троянда / Авто', audioText: 'R. Rose, Car' },
+  { letter: 'S s', nameEn: 'S /es/', nameUk: 'Ес', ipa: '/s/ or /z/', category: 'consonant', categoryLabelEn: 'Sibilant Fricative', categoryLabelUk: 'Свистячий приголосний', example: 'Sun', meaningEn: 'Star at centre of system', meaningUk: 'Сонце', audioText: 'S. Sun' },
+  { letter: 'T t', nameEn: 'T /tiː/', nameUk: 'Ті', ipa: '/t/', category: 'consonant', categoryLabelEn: 'Aspirated Alveolar', categoryLabelUk: 'Придиховий глухий', example: 'Tea', meaningEn: 'Classic British beverage', meaningUk: 'Чай', audioText: 'T. Tea' },
+  { letter: 'U u', nameEn: 'U /juː/', nameUk: 'Ю', ipa: '/juː/ or /ʌ/', category: 'vowel', categoryLabelEn: 'Vowel', categoryLabelUk: 'Голосний', example: 'Universe', meaningEn: 'All existing matter & space', meaningUk: 'Всесвіт', audioText: 'U. Universe' },
+  { letter: 'V v', nameEn: 'V /viː/', nameUk: 'Ві', ipa: '/v/', category: 'consonant', categoryLabelEn: 'Labiodental Voiced', categoryLabelUk: 'Губно-зубний дзвінкий', example: 'Victory', meaningEn: 'Overcoming an obstacle', meaningUk: 'Перемога', audioText: 'V. Victory' },
+  { letter: 'W w', nameEn: 'W /ˈdʌb.əl.juː/', nameUk: 'Дабл-ю', ipa: '/w/', category: 'tricky', categoryLabelEn: 'Rounded Lips /w/', categoryLabelUk: 'Округлені губи /w/', example: 'Water', meaningEn: 'Life-giving liquid', meaningUk: 'Вода', audioText: 'W. Water' },
+  { letter: 'X x', nameEn: 'X /eks/', nameUk: 'Екс', ipa: '/ks/ or /gz/', category: 'consonant', categoryLabelEn: 'Double Consonant', categoryLabelUk: 'Подвійний приголосний', example: 'X-ray', meaningEn: 'Electromagnetic wave', meaningUk: 'Рентген', audioText: 'X. X-ray' },
+  { letter: 'Y y', nameEn: 'Y /waɪ/', nameUk: 'Вай', ipa: '/j/ or /aɪ/', category: 'vowel', categoryLabelEn: 'Semi-Vowel', categoryLabelUk: 'Напівголосний', example: 'Yesterday', meaningEn: 'The day before today', meaningUk: 'Вчора', audioText: 'Y. Yesterday' },
+  { letter: 'Z z', nameEn: 'Z /zed/ (British!)', nameUk: 'Зед (Британська вимова)', ipa: '/z/', category: 'tricky', categoryLabelEn: 'British "Zed" /zed/', categoryLabelUk: 'Британське "Зед" /zed/', example: 'Zebra', meaningEn: 'African wild striped horse', meaningUk: 'Зебра', audioText: 'Z. Zed. Zebra' },
+];
+---
+
+<div class="alphabet-wrapper">
+  <div class="alphabet-filters" id="alphabet-filters">
+    <button class="alphabet-filter-btn active" data-filter="all">
+      {isUk ? 'Всі 26 літер' : 'All 26 Letters'}
+    </button>
+    <button class="alphabet-filter-btn" data-filter="vowel">
+      {isUk ? 'Голосні (5)' : 'Vowels (5)'}
+    </button>
+    <button class="alphabet-filter-btn" data-filter="consonant">
+      {isUk ? 'Приголосні (15)' : 'Consonants (15)'}
+    </button>
+    <button class="alphabet-filter-btn" data-filter="tricky">
+      {isUk ? 'Особливі та Британські (6)' : 'British & Tricky (6)'}
+    </button>
+  </div>
+
+  <div class="alphabet-grid" id="alphabet-grid">
+    {letters.map((item) => (
+      <div class="letter-card" data-category={item.category}>
+        <div class="letter-card-header">
+          <div>
+            <div class="letter-main">{item.letter}</div>
+            <div class="letter-name-tag">{isUk ? item.nameUk : item.nameEn}</div>
+          </div>
+          <span class="letter-sound-badge">{item.ipa}</span>
+        </div>
+
+        <div class={`letter-type-pill type-${item.category}`}>
+          {isUk ? item.categoryLabelUk : item.categoryLabelEn}
+        </div>
+
+        <div class="letter-example">
+          <div>
+            <div class="example-word">{item.example}</div>
+            <div class="example-meaning">{isUk ? item.meaningUk : item.meaningEn}</div>
+          </div>
+          <button 
+            type="button" 
+            class="audio-btn" 
+            data-audio={item.audioText} 
+            title={isUk ? `Британська вимова: ${item.letter}` : `British pronunciation: ${item.letter}`}
+            aria-label={isUk ? `Британська вимова: ${item.letter}` : `British pronunciation: ${item.letter}`}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('.alphabet-filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.letter-card');
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      cards.forEach((card) => {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  const audioButtons = document.querySelectorAll<HTMLButtonElement>('.audio-btn');
+
+  audioButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const text = btn.getAttribute('data-audio');
+      if (!text || !('speechSynthesis' in window)) return;
+
+      window.speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-GB';
+      utterance.rate = 0.88;
+
+      const voices = window.speechSynthesis.getVoices();
+      const britishVoice = voices.find(
+        (v) => v.lang === 'en-GB' || v.name.toLowerCase().includes('british') || v.name.toLowerCase().includes('uk')
+      );
+      if (britishVoice) {
+        utterance.voice = britishVoice;
+      }
+
+      btn.classList.add('playing');
+      utterance.onend = () => btn.classList.remove('playing');
+      utterance.onerror = () => btn.classList.remove('playing');
+
+      window.speechSynthesis.speak(utterance);
+    });
+  });
+</script>

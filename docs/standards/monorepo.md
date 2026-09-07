@@ -26,7 +26,9 @@ lang-flow/
 │   ├── ai/                     # Gemini client, structured output schemas, prompt templates
 │   └── mcp-server/             # Model Context Protocol (MCP) server & tool bindings
 ├── apps/
-│   └── web/                    # TanStack Start / Router + Chakra UI v3 application
+│   ├── langlow/                # Main TanStack Router + Chakra UI v3 application
+│   ├── bglow/                  # Bulgarian grammar & phonetics portal (Astro Starlight)
+│   └── englow/                 # British English learning & VIP classroom portal (Astro Starlight)
 └── packages/
     └── shared-types/           # Shared TypeScript schemas / generated types
 ```
@@ -57,11 +59,12 @@ To ensure 100% type compatibility between Rust and TypeScript:
 
 The root `package.json` provides unified developer commands:
 
-| Command        | Action                                                         |
-| :------------- | :------------------------------------------------------------- |
-| `pnpm dev`     | Starts frontend Vite dev server and Axum backend concurrently. |
-| `pnpm dev:web` | Starts web application dev server.                             |
-| `pnpm dev:api` | Runs `cargo watch -x 'run --bin api'`.                         |
-| `pnpm test`    | Runs both `cargo test` and frontend test suites.               |
-| `pnpm check`   | Runs `cargo check`, `cargo clippy`, and `pnpm typecheck`.      |
-| `pnpm format`  | Formats all Rust and TypeScript files.                         |
+| Command            | Action                                                                    |
+| :----------------- | :------------------------------------------------------------------------ |
+| `pnpm dev`         | Runs all workspace dev servers concurrently via Turborepo.                |
+| `pnpm dev:langlow` | Starts the main active-recall web client (port 3000).                     |
+| `pnpm dev:bglow`   | Starts the Bulgarian grammar portal (Astro Starlight, port 4321).         |
+| `pnpm dev:englow`  | Starts the British English & VIP classroom portal (Starlight, port 4322). |
+| `pnpm dev:api`     | Runs `cargo watch -x 'run --bin api'`.                                    |
+| `pnpm test`        | Runs test suites across packages.                                         |
+| `pnpm typecheck`   | Runs `astro check` and `tsc --noEmit` across all apps.                    |
