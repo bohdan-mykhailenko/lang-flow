@@ -19,6 +19,15 @@ export default defineConfig({
           lang: 'uk',
         },
       },
+      head: [
+        {
+          tag: 'script',
+          attrs: {
+            src: '/scripts/floating-lang.js',
+            defer: true,
+          },
+        },
+      ],
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         {
@@ -32,8 +41,8 @@ export default defineConfig({
           slug: 'index',
         },
         {
-          label: 'English Variations (US, UK, AU)',
-          translations: { uk: 'Варіанти англійської (US, UK, AU)' },
+          label: 'English Variations (US vs UK & World)',
+          translations: { uk: 'Варіанти англійської (US vs UK та світ)' },
           slug: 'variations',
         },
         {
