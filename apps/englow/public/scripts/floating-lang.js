@@ -13,7 +13,7 @@
       ? path.replace(/^\/uk(\/|$)/, '$1') || '/'
       : '/uk' + (path.startsWith('/') ? path : '/' + path);
 
-    const langCode = isUk ? 'UA' : 'US';
+    const langCode = isUk ? 'UA' : 'EN';
     const langThemeClass = isUk ? 'theme-ua' : 'theme-us';
     const ariaLabel = isUk ? 'Switch to English' : 'Перейти на українську';
 
