@@ -421,10 +421,11 @@ const letters: LetterItem[] = [
       const filter = btn.getAttribute('data-filter');
 
       cards.forEach((card) => {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.style.display = 'flex';
+        const matches = filter === 'all' || card.getAttribute('data-category') === filter;
+        if (matches) {
+          card.classList.remove('is-hidden');
         } else {
-          card.style.display = 'none';
+          card.classList.add('is-hidden');
         }
       });
     });
