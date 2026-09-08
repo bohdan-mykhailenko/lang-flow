@@ -542,18 +542,21 @@ header.header::before {
 .alphabet-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: 480px;
   gap: 1.5rem;
-  align-items: stretch;
+  align-items: start;
 }
 
 .letter-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 480px;
-  min-height: 480px;
-  max-height: 480px;
-  align-self: stretch;
+  height: 480px !important;
+  min-height: 480px !important;
+  max-height: 480px !important;
+  margin: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
   box-sizing: border-box;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -563,6 +566,10 @@ header.header::before {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
   box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.35);
   overflow: hidden;
+}
+
+.letter-card * {
+  box-sizing: border-box;
 }
 
 .letter-card.is-hidden {
@@ -703,6 +710,9 @@ header.header::before {
 }
 
 .word-row {
+  margin: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
