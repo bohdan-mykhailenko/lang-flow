@@ -15,7 +15,7 @@ export default defineConfig({
     },
     starlight({
       title: 'Englow',
-      description: 'American English & 1-on-1 Learning Portal.',
+      description: 'Global English & 1-on-1 Learning Portal.',
       defaultLocale: 'root',
       locales: {
         root: {
