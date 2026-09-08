@@ -5,6 +5,14 @@ export default defineConfig({
   site: 'https://englow.lang-flow.app',
   image: { service: { entrypoint: 'astro/assets/services/noop' } },
   integrations: [
+    {
+      name: 'mermaid-client',
+      hooks: {
+        'astro:config:setup': ({ injectScript }) => {
+          injectScript('page', `import "/src/scripts/mermaid.ts";`);
+        },
+      },
+    },
     starlight({
       title: 'Englow',
       description: 'American English & 1-on-1 Learning Portal.',
