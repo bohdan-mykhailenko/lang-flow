@@ -238,40 +238,39 @@ header.header::before {
 }
 
 /* ====================================================================
-   MOVABLE / DRAGGABLE QUICK LANGUAGE BUTTON (UA / USA THEMED)
+   CLEAN FLOATING QUICK LANGUAGE BUTTON (UA / USA THEMED)
    ==================================================================== */
 
 .englow-floating-lang-pill {
   position: fixed !important;
-  bottom: 2rem !important;
-  right: 2rem !important;
+  bottom: 1.75rem !important;
+  right: 1.75rem !important;
+  left: auto !important;
+  top: auto !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: fit-content !important;
+  white-space: nowrap !important;
   z-index: 9999 !important;
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.45rem !important;
-  padding: 0.5rem 1rem !important;
+  padding: 0.55rem 1rem !important;
   border-radius: 9999px !important;
   text-decoration: none !important;
   font-family: var(--sl-font-sans, system-ui, sans-serif) !important;
   font-size: 0.95rem !important;
   font-weight: 800 !important;
   letter-spacing: 0.04em !important;
-  cursor: grab !important;
+  cursor: pointer !important;
   user-select: none !important;
   -webkit-user-select: none !important;
-  touch-action: none !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
   box-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.55) !important;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease !important;
 }
 
-.englow-floating-lang-pill.is-dragging {
-  cursor: grabbing !important;
-  transform: scale(1.08) !important;
-  box-shadow: 0 20px 36px -6px rgba(0, 0, 0, 0.75) !important;
-}
-
-/* Ukrainian Theme (Blue & Yellow) */
+/* Ukrainian Theme (Blue & Gold) */
 .englow-floating-lang-pill.theme-ua {
   background: linear-gradient(135deg, #0057b7 0%, #082852 100%) !important;
   border: 2px solid #ffd700 !important;
@@ -290,7 +289,7 @@ header.header::before {
   color: #ffd700 !important;
 }
 
-.englow-floating-lang-pill.theme-ua:hover:not(.is-dragging) {
+.englow-floating-lang-pill.theme-ua:hover {
   transform: translateY(-3px) scale(1.06) !important;
   border-color: #ffffff !important;
   box-shadow:
@@ -298,13 +297,13 @@ header.header::before {
     0 0 24px rgba(255, 215, 0, 0.7) !important;
 }
 
-/* USA Theme (Navy, White, Crimson Red) */
+/* USA / English Theme (Navy, White, Crimson Red) */
 .englow-floating-lang-pill.theme-us {
-  background: linear-gradient(135deg, #0a2240 0%, #7f1d1d 100%) !important;
+  background: linear-gradient(135deg, #0a2240 0%, #1e1b4b 100%) !important;
   border: 2px solid #ef4444 !important;
   color: #ffffff !important;
   box-shadow:
-    0 10px 28px -4px rgba(185, 28, 28, 0.6),
+    0 10px 28px -4px rgba(239, 68, 68, 0.5),
     0 0 16px rgba(59, 130, 246, 0.45) !important;
 }
 
@@ -317,11 +316,11 @@ header.header::before {
   color: #60a5fa !important;
 }
 
-.englow-floating-lang-pill.theme-us:hover:not(.is-dragging) {
+.englow-floating-lang-pill.theme-us:hover {
   transform: translateY(-3px) scale(1.06) !important;
   border-color: #ffffff !important;
   box-shadow:
-    0 14px 34px -4px rgba(185, 28, 28, 0.8),
+    0 14px 34px -4px rgba(239, 68, 68, 0.8),
     0 0 24px rgba(59, 130, 246, 0.7) !important;
 }
 
