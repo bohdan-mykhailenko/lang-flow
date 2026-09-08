@@ -41,8 +41,8 @@ export default defineConfig({
           slug: 'index',
         },
         {
-          label: 'English Variations (US vs UK & World)',
-          translations: { uk: 'Варіанти англійської (US vs UK та світ)' },
+          label: 'Variations',
+          translations: { uk: 'Варіанти' },
           slug: 'variations',
         },
         {
@@ -50,28 +50,28 @@ export default defineConfig({
           translations: { uk: 'Вимова' },
           items: [
             {
-              label: 'IPA Atlas (All 44 Sounds)',
-              translations: { uk: 'Атлас IPA (Усі 44 звуки)' },
+              label: 'IPA Atlas',
+              translations: { uk: 'Атлас IPA' },
               slug: 'phonetics/ipa-chart',
             },
             {
-              label: 'Vowels & The Schwa',
-              translations: { uk: 'Голосні та Шва /ə/' },
+              label: 'Vowels & Schwa',
+              translations: { uk: 'Голосні та Шва' },
               slug: 'phonetics/vowels',
             },
             {
-              label: 'Diphthongs & Glides',
-              translations: { uk: 'Дифтонги та плавні звуки' },
+              label: 'Diphthongs',
+              translations: { uk: 'Дифтонги' },
               slug: 'phonetics/diphthongs',
             },
             {
-              label: 'Consonants & Challenging Sounds',
-              translations: { uk: 'Приголосні та підступні звуки' },
+              label: 'Consonants',
+              translations: { uk: 'Приголосні' },
               slug: 'phonetics/consonants',
             },
             {
-              label: 'Connected Speech & Rhythm',
-              translations: { uk: "Зв'язне мовлення та ритм" },
+              label: 'Connected Speech',
+              translations: { uk: "Зв'язне мовлення" },
               slug: 'phonetics/connected-speech',
             },
           ],
