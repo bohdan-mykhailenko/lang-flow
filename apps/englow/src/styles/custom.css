@@ -213,6 +213,7 @@ header.header::before {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin: 2.5rem 0;
+  align-items: stretch;
 }
 
 .team-card {
@@ -228,6 +229,7 @@ header.header::before {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  height: 100%;
 }
 
 .team-card.teacher {
@@ -279,11 +281,12 @@ header.header::before {
 }
 
 .team-name {
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--sl-color-white);
   line-height: 1.2;
   margin-bottom: 0.35rem;
+  white-space: nowrap;
 }
 
 .team-badge {
@@ -292,7 +295,7 @@ header.header::before {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 0.85rem;
   border-radius: 9999px;
   margin-bottom: 1.25rem;
 }
@@ -314,6 +317,10 @@ header.header::before {
   color: var(--sl-color-gray-2);
   line-height: 1.65;
   margin: 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ====================================================================
