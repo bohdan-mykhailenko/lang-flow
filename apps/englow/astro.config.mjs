@@ -46,6 +46,16 @@ export default defineConfig({
               slug: 'phonetics/th-sound',
             },
             {
+              label: 'Diphthongs & Glides',
+              translations: { uk: 'Дифтонги та складні звуки' },
+              slug: 'phonetics/diphthongs',
+            },
+            {
+              label: 'Transcription & IPA',
+              translations: { uk: 'Повна транскрипція та IPA' },
+              slug: 'phonetics/transcription',
+            },
+            {
               label: 'Vowels & Sounds',
               translations: { uk: 'Голосні звуки' },
               slug: 'phonetics/vowels-and-diphthongs',
