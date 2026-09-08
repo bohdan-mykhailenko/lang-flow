@@ -18,6 +18,7 @@ Before writing, refactoring, or reviewing code, consult the domain-specific stan
 6. [Database & Lexical Search Standards](file:///docs/standards/database.md) — Neon PostgreSQL, `tsvector` full-text search, migrations.
 7. [Agent Workflow & Delivery Loop](file:///docs/standards/organization-and-agent-workflow.md) — 4-stage delivery loop, design research, plan lifecycle.
 8. [Ukrainian-to-English Pedagogy & Style](file:///.agents/rules/pedagogy-ua-en.md) — Strict UA-to-EN bridging, GenAm baseline, zero fluff.
+9. [Mandatory Browser Verification](file:///.agents/rules/browser-verification.md) — Mandatory live browser walk to validate UI, media, and layout before completion.
 
 ---
 
@@ -43,3 +44,9 @@ Before writing, refactoring, or reviewing code, consult the domain-specific stan
 - **Rust**: Must pass `cargo check`, `cargo clippy -- -D warnings`, and `cargo fmt --check`.
 - **Frontend**: Must pass `pnpm typecheck` and `pnpm lint`.
 - **No placeholders**: Every UI component must be fully styled, interactive, and visually stunning.
+
+### 4. Mandatory Browser Walk & Visual Verification
+
+- **Never declare UI work complete without visual inspection** using browser automation (`browser_subagent` or Playwright).
+- Verify all embedded media (videos, audio, avatars) render and load cleanly without "Video unavailable" or broken asset errors.
+- Confirm layouts and typography look balanced and polished in both desktop and mobile viewports.
