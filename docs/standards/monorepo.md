@@ -26,9 +26,8 @@ lang-flow/
 │   ├── ai/                     # Gemini client, structured output schemas, prompt templates
 │   └── mcp-server/             # Model Context Protocol (MCP) server & tool bindings
 ├── apps/
-│   ├── langlow/                # Main TanStack Router + Chakra UI v3 application
-│   ├── bglow/                  # Bulgarian grammar & phonetics portal (Astro Starlight)
-│   └── englow/                 # British English learning & VIP classroom portal (Astro Starlight)
+│   ├── langflow/               # Main TanStack Router + Chakra UI v3 application
+│   └── englishka/              # English learning web application (React + Firebase)
 └── packages/
     └── shared-types/           # Shared TypeScript schemas / generated types
 ```
@@ -59,12 +58,11 @@ To ensure 100% type compatibility between Rust and TypeScript:
 
 The root `package.json` provides unified developer commands:
 
-| Command            | Action                                                                    |
-| :----------------- | :------------------------------------------------------------------------ |
-| `pnpm dev`         | Runs all workspace dev servers concurrently via Turborepo.                |
-| `pnpm dev:langlow` | Starts the main active-recall web client (port 3000).                     |
-| `pnpm dev:bglow`   | Starts the Bulgarian grammar portal (Astro Starlight, port 4321).         |
-| `pnpm dev:englow`  | Starts the British English & VIP classroom portal (Starlight, port 4322). |
-| `pnpm dev:api`     | Runs `cargo watch -x 'run --bin api'`.                                    |
-| `pnpm test`        | Runs test suites across packages.                                         |
-| `pnpm typecheck`   | Runs `astro check` and `tsc --noEmit` across all apps.                    |
+| Command              | Action                                                     |
+| :------------------- | :--------------------------------------------------------- |
+| `pnpm dev`           | Runs all workspace dev servers concurrently via Turborepo. |
+| `pnpm dev:langflow`  | Starts the main active-recall web client.                  |
+| `pnpm dev:englishka` | Starts the Englishka learning web client (port 3001).      |
+| `pnpm dev:api`       | Runs `cargo watch -x 'run --bin api'`.                     |
+| `pnpm test`          | Runs test suites across packages.                          |
+| `pnpm typecheck`     | Runs `astro check` and `tsc --noEmit` across all apps.     |

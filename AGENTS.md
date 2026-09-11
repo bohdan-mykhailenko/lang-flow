@@ -19,6 +19,7 @@ Before writing, refactoring, or reviewing code, consult the domain-specific stan
 7. [Agent Workflow & Delivery Loop](file:///docs/standards/organization-and-agent-workflow.md) — 4-stage delivery loop, design research, plan lifecycle.
 8. [Ukrainian-to-English Pedagogy & Style](file:///.agents/rules/pedagogy-ua-en.md) — Strict UA-to-EN bridging, GenAm baseline, zero fluff.
 9. [Mandatory Browser Verification](file:///.agents/rules/browser-verification.md) — Mandatory live browser walk to validate UI, media, and layout before completion.
+10. [No Fallback Crutches & Direct Target Integration](file:///.agents/rules/no-fallbacks.md) — Strict direct target integration from day 1 (no mock/temporary fallbacks).
 
 ---
 
@@ -50,3 +51,8 @@ Before writing, refactoring, or reviewing code, consult the domain-specific stan
 - **Never declare UI work complete without visual inspection** using browser automation (`browser_subagent` or Playwright).
 - Verify all embedded media (videos, audio, avatars) render and load cleanly without "Video unavailable" or broken asset errors.
 - Confirm layouts and typography look balanced and polished in both desktop and mobile viewports.
+
+### 5. No Fallbacks: Direct Target Integration From Day 1
+
+- Never build temporary fallback crutches (e.g. falling back to LocalStorage when a database/cloud storage is specified).
+- Integrate directly with the chosen target architecture (e.g., Firebase Firestore for Englishka topic progression) from Day 1.

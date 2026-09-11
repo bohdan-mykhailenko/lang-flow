@@ -1,0 +1,38 @@
+{
+  "name": "@lang-flow/englishka",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3001",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "deploy": "firebase deploy --only hosting"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^3.8.1",
+    "@emotion/react": "^11.14.0",
+    "@lang-flow/shared-types": "workspace:*",
+    "@tanstack/react-query": "^5.66.0",
+    "@tanstack/react-router": "^1.109.1",
+    "@types/canvas-confetti": "^1.9.0",
+    "canvas-confetti": "^1.9.4",
+    "firebase": "^12.18.0",
+    "lucide-react": "^0.475.0",
+    "next-themes": "^0.4.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@lang-flow/typescript-config": "workspace:*",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "firebase-tools": "^15.29.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  }
+}

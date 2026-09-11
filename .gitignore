@@ -13,6 +13,7 @@ dist/
 .tanstack/
 .vite/
 .turbo/
+.firebase/
 
 # Local References & Unstructured Knowledge
 references/

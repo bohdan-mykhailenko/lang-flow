@@ -20,10 +20,10 @@ Chakra UI v3 uses a snippet and compound component model (`@chakra-ui/react`):
 
 ---
 
-## 3. Directory Layout (`apps/langlow/src`)
+## 3. Directory Layout (`apps/langflow/src`)
 
 ```
-apps/langlow/src/
+apps/langflow/src/
 ├── app/                        # TanStack Router routes & pages
 │   ├── routes/
 │   │   ├── __root.tsx          # Root layout with ChakraProvider & Navbar
